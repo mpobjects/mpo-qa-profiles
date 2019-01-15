@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mpobjects</groupId>
+	<artifactId>mpo-qa-profiles</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>MPO QA Profiles</name>
+	<description>Package containing profiles for QA: checkstyle, findbugs, formatting, etc.</description>
+	<inceptionYear>2019</inceptionYear>
+
+	<organization>
+		<name>MP Objects</name>
+		<url>http://www.mp-objects.com</url>
+	</organization>
+
+	<scm>
+		<connection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</connection>
+		<url>https://github.com/mpobjects/mpo-qa-profiles.git</url>
+	</scm>
+
+	<ciManagement>
+		<system>Travis</system>
+		<url>https://travis-ci.org/mpobjects/mpo-qa-profiles</url>
+	</ciManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<debug>true</debug>
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+								<Build-Revision>${build.scm.revision}</Build-Revision>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+		<maven-compiler-plugin>3.8.0</maven-compiler-plugin>
+		<maven-source-plugin>3.0.1</maven-source-plugin>
+		<maven-jar-plugin>3.1.1</maven-jar-plugin>
+		<maven-gpg-plugin>1.6</maven-gpg-plugin>
+		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>default-build-properties</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<build.number>0</build.number>
+				<build.id>undefined</build.id>
+				<build.url>undefined</build.url>
+				<build.scm.revision>undefined</build.scm.revision>
+				<build.scm.branch>undefined</build.scm.branch>
+			</properties>			
+		</profile>
+		<profile>
+			<id>travis-ci</id>
+			<activation>
+				<property>
+					<name>env.TRAVIS</name>
+				</property>
+			</activation>
+			<properties>
+				<build.number>${env.TRAVIS_BUILD_NUMBER}</build.number>
+				<build.id>${env.TRAVIS_BUILD_ID}</build.id>
+				<build.url>${env.TRAVIS_BUILD_WEB_URL}</build.url>
+				<build.scm.revision>${env.TRAVIS_COMMIT}</build.scm.revision>
+				<build.scm.branch>${env.TRAVIS_BRANCH}</build.scm.branch>
+			</properties>			
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+</project>
