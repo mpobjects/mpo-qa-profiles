@@ -38,17 +38,6 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin}</version>
-					<inherited>true</inherited>
-					<configuration>
-						<debug>true</debug>
-						<showWarnings>true</showWarnings>
-						<showDeprecation>true</showDeprecation>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven-source-plugin}</version>
 				</plugin>
@@ -120,7 +109,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-		<maven-compiler-plugin>3.8.0</maven-compiler-plugin>
 		<maven-source-plugin>3.0.1</maven-source-plugin>
 		<maven-jar-plugin>3.1.1</maven-jar-plugin>
 		<maven-gpg-plugin>1.6</maven-gpg-plugin>
