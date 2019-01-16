@@ -25,6 +25,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</connection>
+		<developerConnection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</developerConnection>
 		<url>https://github.com/mpobjects/mpo-qa-profiles.git</url>
 	</scm>
 
