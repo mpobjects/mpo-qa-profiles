@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mpobjects</groupId>
 	<artifactId>mpo-qa-profiles</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 	<name>MPO QA Profiles</name>
 	<description>Package containing profiles for QA: checkstyle, findbugs, formatting, etc.</description>
@@ -37,7 +36,7 @@
 		<connection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</connection>
 		<developerConnection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</developerConnection>
 		<url>https://github.com/mpobjects/mpo-qa-profiles.git</url>
-		<tag>HEAD</tag>
+		<tag>mpo-qa-profiles-1.0.1</tag>
 	</scm>
 
 	<ciManagement>
