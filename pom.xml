@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mpobjects</groupId>
 	<artifactId>mpo-qa-profiles</artifactId>
@@ -8,12 +9,22 @@
 	<name>MPO QA Profiles</name>
 	<description>Package containing profiles for QA: checkstyle, findbugs, formatting, etc.</description>
 	<inceptionYear>2019</inceptionYear>
+	<url>https://github.com/mpobjects/mpo-qa-profiles</url>
 
 	<organization>
 		<name>MP Objects</name>
 		<url>http://www.mp-objects.com</url>
 	</organization>
 	
+	<developers>
+		<developer>
+			<name>Michiel Hendriks</name>
+			<email>michiel.hendriks@mp-objects.com</email>
+			<organization>MP OBjects</organization>
+			<organizationUrl>http://www.mp-objects.com</organizationUrl>
+		</developer>
+	</developers>
+
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -26,8 +37,8 @@
 		<connection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</connection>
 		<developerConnection>scm:git:https://github.com/mpobjects/mpo-qa-profiles.git</developerConnection>
 		<url>https://github.com/mpobjects/mpo-qa-profiles.git</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<ciManagement>
 		<system>Travis</system>
@@ -114,7 +125,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
 		<maven-source-plugin>3.0.1</maven-source-plugin>
 		<maven-jar-plugin>3.1.1</maven-jar-plugin>
 		<maven-release-plugin>2.5.3</maven-release-plugin>
@@ -134,7 +145,7 @@
 				<build.url>undefined</build.url>
 				<build.scm.revision>undefined</build.scm.revision>
 				<build.scm.branch>undefined</build.scm.branch>
-			</properties>			
+			</properties>
 		</profile>
 		<profile>
 			<id>travis-ci</id>
@@ -149,7 +160,7 @@
 				<build.url>${env.TRAVIS_BUILD_WEB_URL}</build.url>
 				<build.scm.revision>${env.TRAVIS_COMMIT}</build.scm.revision>
 				<build.scm.branch>${env.TRAVIS_BRANCH}</build.scm.branch>
-			</properties>			
+			</properties>
 		</profile>
 	</profiles>
 
